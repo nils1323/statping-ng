@@ -6,10 +6,7 @@ const helpers              = require('./helpers');
 const isDev                = process.env.NODE_ENV === 'development';
 
 const webpackConfig = {
-  entry: {
-    polyfill: '@babel/polyfill',
-    main: helpers.root('src', 'main'),
-  },
+  entry: ["@babel/polyfill", "./src/main.js"],
   resolve: {
     extensions: [ '.js', '.vue' ],
     alias: {

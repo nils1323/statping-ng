@@ -44,8 +44,8 @@ down:
 	docker-compose -f docker-compose.yml -f dev/docker-compose.full.yml down --volumes --remove-orphans
 
 lite: clean
-	docker build -t statping-ng/statping-ng:dev -f dev/Dockerfile.dev .
 	docker-compose -f dev/docker-compose.lite.yml down
+	docker-compose -f dev/docker-compose.lite.yml build
 	docker-compose -f dev/docker-compose.lite.yml up --remove-orphans
 
 reup: down clean compose-build-full up

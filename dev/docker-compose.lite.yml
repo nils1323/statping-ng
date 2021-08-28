@@ -2,9 +2,11 @@ version: '2.3'
 
 services:
 
-  statping_dev:
-    container_name: statping_dev
-    image: statping-ng/statping-ng:dev
+  statping-ng_dev:
+    container_name: statping-ng_dev
+    build:
+      context: ../
+      dockerfile: dev/Dockerfile.dev
     restart: on-failure
     volumes:
       - ./cmd:/go/src/github.com/statping-ng/statping-ng/cmd/
@@ -30,7 +32,7 @@ services:
       - 8888:8888
       - 8585:8585
     networks:
-      - statping
+      - statping-ng
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:8585/health || false"]
       timeout: 2s
@@ -38,4 +40,4 @@ services:
       retries: 10
 
 networks:
-  statping:
+  statping-ng:
